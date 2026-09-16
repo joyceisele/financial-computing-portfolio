@@ -1,0 +1,9 @@
+{
+  "name": "financial-computing-backend",
+  "version": "1.0.0",
+  "description": "Backend service for the Financial Computing Portfolio project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
