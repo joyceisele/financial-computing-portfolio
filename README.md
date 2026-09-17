@@ -57,3 +57,97 @@ Example:
 
 ```bash
 git checkout -b feature/project-structure
+
+## Docker Development Environment
+
+### Prerequisites
+
+The project requires:
+
+* Docker Desktop
+* Docker Compose
+
+Docker Desktop must be running before starting the application.
+
+### Starting the application
+
+From the project root, run:
+
+```bash
+docker compose -f Infrastructure/docker-compose.yaml up --build -d
+```
+
+This starts the frontend and backend Docker services.
+
+The frontend is available at:
+
+```text
+http://localhost:8080
+```
+
+The backend is available at:
+
+```text
+http://localhost:3000
+```
+
+The backend health endpoint is:
+
+```text
+http://localhost:3000/health
+```
+
+The health endpoint can also be accessed through Nginx at:
+
+```text
+http://localhost:8080/api/health
+```
+
+### Stopping the application
+
+Run:
+
+```bash
+docker compose -f Infrastructure/docker-compose.yaml down
+```
+
+### Checking running containers
+
+Run:
+
+```bash
+docker ps
+```
+
+The project should have the following containers running:
+
+* `financial-computing-backend`
+* `financial-computing-frontend`
+
+### Docker architecture
+
+The application uses two Docker services:
+
+* **Frontend:** Nginx serving the frontend on port `8080`
+* **Backend:** Node.js application exposed on port `3000`
+
+The services communicate through the Docker network `financial-network`.
+
+A named Docker volume is used for backend `node_modules`.
+
+### Troubleshooting
+
+If Docker commands fail to connect to the Docker engine, make sure Docker Desktop is running.
+
+To rebuild and restart the application:
+
+```bash
+docker compose -f Infrastructure/docker-compose.yaml down
+docker compose -f Infrastructure/docker-compose.yaml up --build -d
+```
+
+To view service logs:
+
+```bash
+docker compose -f Infrastructure/docker-compose.yaml logs --tail=50
+```
