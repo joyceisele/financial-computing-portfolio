@@ -1,0 +1,13 @@
+node_modules/
+.cache
+cypress/videos
+cypress/screenshots
+cypress/cache
+cypress/downloads
+cypress/reports
+cypress/logs
+
+
+# allure
+allure-results/
+allure-report/
