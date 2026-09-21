@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Register | Financial Computing Portfolio</title>
+  <title>Dashboard | Financial Computing Portfolio</title>
 
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/base.css">
@@ -13,61 +13,47 @@
   <link rel="stylesheet" href="../css/responsive.css">
 </head>
 
-<body class="auth-page">
+<body class="dashboard-page">
 
-  <main class="auth-container">
+  <header class="topbar">
 
-    <div class="auth-header">
-      <h1>Create Account</h1>
-      <p>Start exploring financial analytics</p>
-    </div>
+    <strong>Financial Computing Portfolio</strong>
 
-    <section class="card">
+    <button id="logout-button">
+      Logout
+    </button>
 
-      <form id="register-form">
+  </header>
 
-        <div class="form-group">
-          <label for="name">Full name</label>
+  <main class="page-container">
 
-          <input
-            id="name"
-            type="text"
-            required
-          >
-        </div>
+    <h1>Portfolio Dashboard</h1>
 
-        <div class="form-group">
-          <label for="email">Email</label>
+    <p>
+      Overview of portfolio performance, risk and market exposure.
+    </p>
 
-          <input
-            id="email"
-            type="email"
-            required
-          >
-        </div>
+    <section class="kpi-grid">
 
-        <div class="form-group">
-          <label for="password">Password</label>
+      <article class="kpi-card">
+        <span>Portfolio Value</span>
+        <strong id="portfolio-value">£0.00</strong>
+      </article>
 
-          <input
-            id="password"
-            type="password"
-            required
-          >
-        </div>
+      <article class="kpi-card">
+        <span>Daily Return</span>
+        <strong id="daily-return">0.00%</strong>
+      </article>
 
-        <button class="button" type="submit">
-          Create account
-        </button>
+      <article class="kpi-card">
+        <span>Portfolio Risk</span>
+        <strong id="portfolio-risk">N/A</strong>
+      </article>
 
-        <p id="register-message" class="message"></p>
-
-      </form>
-
-      <p>
-        Already registered?
-        <a href="../">Sign in</a>
-      </p>
+      <article class="kpi-card">
+        <span>Assets Tracked</span>
+        <strong id="assets-tracked">0</strong>
+      </article>
 
     </section>
 
@@ -75,6 +61,7 @@
 
   <script src="../js/api.js"></script>
   <script src="../js/auth.js"></script>
+  <script src="../js/layout.js"></script>
 
 </body>
 </html>
