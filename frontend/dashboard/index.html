@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dashboard | Financial Computing Portfolio</title>
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body class="dashboard-page">
+
+  <header class="topbar">
+
+    <strong>Financial Computing Portfolio</strong>
+
+    <button id="logout-button">
+      Logout
+    </button>
+
+  </header>
+
+  <main class="page-container">
+
+    <h1>Portfolio Dashboard</h1>
+
+    <p>
+      Overview of portfolio performance, risk and market exposure.
+    </p>
+
+    <section class="kpi-grid">
+
+      <article class="kpi-card">
+        <span>Portfolio Value</span>
+        <strong id="portfolio-value">£0.00</strong>
+      </article>
+
+      <article class="kpi-card">
+        <span>Daily Return</span>
+        <strong id="daily-return">0.00%</strong>
+      </article>
+
+      <article class="kpi-card">
+        <span>Portfolio Risk</span>
+        <strong id="portfolio-risk">N/A</strong>
+      </article>
+
+      <article class="kpi-card">
+        <span>Assets Tracked</span>
+        <strong id="assets-tracked">0</strong>
+      </article>
+
+    </section>
+
+  </main>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/layout.js"></script>
+
+</body>
+</html>

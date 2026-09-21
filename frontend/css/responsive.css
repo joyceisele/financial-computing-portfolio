@@ -1,0 +1,17 @@
+@media (max-width: 800px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+}
