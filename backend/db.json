@@ -11,6 +11,12 @@
       "name": "Test user2",
       "email": "hello@example.com",
       "password": "hello123"
+    },
+    {
+      "id": 1790081474649,
+      "name": "Test User3",
+      "email": "test@example.com",
+      "password": "Test 123"
     }
   ],
   "dashboard": {
