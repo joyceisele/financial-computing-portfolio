@@ -1,5 +1,22 @@
 {
-  "users": [],
-  "investments": [],
-  "transactions": []
+  "users": [
+    {
+      "id": 1790074613815,
+      "name": "Test user",
+      "email": "example@gmail.com",
+      "password": "Password 123"
+    },
+    {
+      "id": 1790074669518,
+      "name": "Test user2",
+      "email": "hello@example.com",
+      "password": "hello123"
+    }
+  ],
+  "dashboard": {
+    "portfolioValue": 125000,
+    "dailyReturn": 1.8,
+    "portfolioRisk": "Moderate",
+    "assetsTracked": 24
+  }
 }

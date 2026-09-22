@@ -14,7 +14,7 @@ if (loginForm) {
       document.getElementById('login-message');
 
     try {
-      await apiRequest('/auth/login', {
+      const response = await apiRequest('/auth/login', {
         method: 'POST',
 
         body: JSON.stringify({
@@ -26,6 +26,11 @@ if (loginForm) {
       sessionStorage.setItem(
         'financialPortfolioLoggedIn',
         'true'
+      );
+
+      sessionStorage.setItem(
+        'financialPortfolioUser',
+        JSON.stringify(response.user)
       );
 
       window.location.href = 'dashboard/';
@@ -76,8 +81,9 @@ if (registerForm) {
         message.className =
           'message success';
       } catch (error) {
+        console.error('Registration error:', error);
         message.textContent =
-          'Unable to create account.';
+          error.message || 'Unable to create account.';
 
         message.className =
           'message error';
