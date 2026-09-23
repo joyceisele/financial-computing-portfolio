@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Prices | Financial Computing Portfolio</title>
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+
+<header class="topbar">
+  <strong>Financial Computing Portfolio</strong>
+  <a href="../dashboard/">Dashboard</a>
+</header>
+
+<main class="page-container">
+
+  <h1>Prices</h1>
+
+  <p>
+    Review price data for various financial instruments.
+  </p>
+
+  <section class="card">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Ticker</th>
+          <th>Current Price</th>
+          <th>Previous Close</th>
+          <th>Change</th>
+          <th>Change %</th>
+          <th>Day High</th>
+          <th>Day Low</th>
+        </tr>
+      </thead>
+
+      <tbody id="prices-table"></tbody>
+
+    </table>
+
+  </section>
+
+</main>
+
+<script src="../js/api.js"></script>
+<script src="../js/data-table.js"></script>
+<script src="../js/market-data.js"></script>
+
+</body>
+</html>

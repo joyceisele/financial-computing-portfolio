@@ -1,23 +1,18 @@
 {
   "users": [
     {
-      "id": 1790074613815,
-      "name": "Test user",
-      "email": "example@gmail.com",
-      "password": "Password 123"
+      "id": [],
+      "name": " ",
+      "email": "_@gmail.com",
+      "password": "****"
     },
     {
-      "id": 1790074669518,
-      "name": "Test user2",
-      "email": "hello@example.com",
-      "password": "hello123"
-    },
-    {
-      "id": 1790081474649,
-      "name": "Test User3",
-      "email": "test@example.com",
-      "password": "Test 123"
+      "id": [],
+      "name": " ",
+      "email": "_@example.com",
+      "password": "****"
     }
+
   ],
   "dashboard": {
     "portfolioValue": 125000,
