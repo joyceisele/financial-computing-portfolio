@@ -98,3 +98,22 @@ app.get('/api/dashboard', (req, res) => {
 
   res.json(db.dashboard);
 });
+app.get('/api/securities', (req, res) => {
+  const db = readDatabase();
+  res.json(db.securities);
+});
+
+app.get('/api/prices', (req, res) => {
+  const db = readDatabase();
+  res.json(db.prices);
+});
+
+app.get('/api/currencies', (req, res) => {
+  const db = readDatabase();
+  res.json(db.currencies);
+});
+
+app.get('/api/fx-rates', (req, res) => {
+  const db = readDatabase();
+  res.json(db.fxRates);
+});
