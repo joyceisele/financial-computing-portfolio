@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Horizon | Financial Computing Portfolio</title>
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+
+<header class="topbar">
+  <strong>Financial Computing Portfolio</strong>
+  <a href="../dashboard/">Dashboard</a>
+</header>
+
+<main class="page-container">
+
+  <h1>Horizon</h1>
+
+  <p>
+    Review security horizon data.
+  </p>
+
+  <section class="card">
+
+    <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Ticker</th>
+          <th>Security</th>
+          <th>Asset Class</th>
+          <th>Sector</th>
+          <th>Currency</th>
+          <th>Risk</th>
+          <th>Price</th>
+          <th>Daily Change %</th>
+          <th>1Y Return</th>
+          <th>Benchmark</th>
+          <th>Excess Return</th>       
+        </tr>
+      </thead>
+      <tbody id="horizon-table"></tbody>
+    </table>
+    </div>
+    
+  </section>
+
+  <button id="download-csv"> Download CSV </button>
+  
+</main>
+
+<script src="../js/api.js"></script>
+<script src="../js/data-table.js"></script>
+<script src="../js/horizon.js"></script>
+
+</body>
+</html>

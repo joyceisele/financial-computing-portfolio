@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Timeseries | Financial Computing Portfolio</title>
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+
+<header class="topbar">
+  <strong>Financial Computing Portfolio</strong>
+  <a href="../dashboard/">Dashboard</a>
+</header>
+
+<main class="page-container">
+
+  <h1>Timeseries</h1>
+
+  <p>
+    Review security timeseries data.
+  </p>
+
+  <section class="card">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Ticker</th>
+          <th>Price</th>
+          <th>Daily Change</th>
+          <th>Daily Change %</th>
+          <th>Start Price</th>
+          <th>Latest Price</th>
+          <th>Period Change</th>
+          <th>Period Change %</th>
+          <th>Highest Price</th>
+          <th>Lowest Price</th>
+        </tr>
+      </thead>
+
+      <tbody id="timeseries-table"></tbody>
+
+    </table>
+
+  </section>
+
+</main>
+
+<script src="../js/api.js"></script>
+<script src="../js/data-table.js"></script>
+<script src="../js/timeseries.js"></script>
+
+</body>
+</html>

@@ -71,7 +71,7 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
+  table-layout: auto;
 }
 
 th,
@@ -84,9 +84,14 @@ td {
 
 th {
   font-weight: 600;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 td {
   white-space: nowrap;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
 }
