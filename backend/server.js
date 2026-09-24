@@ -117,3 +117,81 @@ app.get('/api/fx-rates', (req, res) => {
   const db = readDatabase();
   res.json(db.fxRates);
 });
+
+app.get('/api/performance', (req, res) => {
+  const db = readDatabase();
+  res.json(db.performance);
+});
+
+app.get('/api/timeseries', (req, res) => {
+  const db = readDatabase();
+  const ticker = req.query.ticker;
+  if (!ticker) {
+    return res.json(db.timeseries);
+  }
+  const results =
+    db.timeseries.filter(
+      item => item.ticker === ticker
+    );
+  res.json(results);
+});
+app.get('/api/horizon', (req, res) => {
+  const db = readDatabase();
+  const horizon =
+    db.securities.map((security) => {
+      const price =
+        db.prices.find(
+          item =>
+            item.ticker ===
+            security.ticker
+        );
+      const performance =
+        db.performance.find(
+          item =>
+            item.ticker ===
+            security.ticker
+        );
+      const priceChange =
+        price
+          ? price.price -
+            price.previousClose
+          : 0;
+      const priceChangePercentage =
+        price
+          ? (
+              priceChange /
+              price.previousClose
+            ) * 100
+          : 0;
+
+      return {
+        ticker:
+          security.ticker,
+        name:
+          security.name,
+        assetClass:
+          security.assetClass,
+
+        sector:
+          security.sector,
+        currency:
+          security.currency,
+        risk:
+          security.risk,
+        price:
+          price?.price ?? 0,
+        dailyChange:
+          priceChangePercentage,
+        oneYearReturn:
+          performance?.oneYear ?? 0,
+        benchmark:
+          performance?.benchmark ?? 0,
+        excessReturn:
+          performance
+            ? performance.oneYear -
+              performance.benchmark
+            : 0
+      };
+    });
+  res.json(horizon);
+});
