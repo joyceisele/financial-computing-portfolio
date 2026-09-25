@@ -4,11 +4,10 @@ const fs = require('fs');
 
 const app = express();
 const PORT = 3000;
+const DB_FILE = './db.json';
 
 app.use(cors());
 app.use(express.json());
-
-const DB_FILE = './db.json';
 
 function readDatabase() {
   const data = fs.readFileSync(DB_FILE, 'utf8');
@@ -16,182 +15,121 @@ function readDatabase() {
 }
 
 function writeDatabase(data) {
-  fs.writeFileSync(
-    DB_FILE,
-    JSON.stringify(data, null, 2)
-  );
+  fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2));
 }
 
 app.get('/api/health', (req, res) => {
-  res.json({
-    status: 'OK',
-    service: 'financial-computing-backend'
-  });
+  res.json({ status: 'OK', service: 'financial-computing-backend' });
 });
+
 app.post('/api/auth/register', (req, res) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
-    return res.status(400).json({
-      message: 'Name, email and password are required'
-    });
+    return res.status(400).json({ message: 'Name, email and password are required' });
   }
 
   const db = readDatabase();
-
-  const existingUser = db.users.find(
-    (user) => user.email === email
-  );
+  const normalizedEmail = email.trim().toLowerCase();
+  const existingUser = db.users.find((user) => user.email.toLowerCase() === normalizedEmail);
 
   if (existingUser) {
-    return res.status(409).json({
-      message: 'User already exists'
-    });
+    return res.status(409).json({ message: 'User already exists' });
   }
 
   const newUser = {
     id: Date.now(),
-    name,
-    email,
+    name: name.trim(),
+    email: normalizedEmail,
     password
   };
 
   db.users.push(newUser);
-
   writeDatabase(db);
 
-  res.status(201).json({
-    message: 'Account created successfully'
-  });
+  return res.status(201).json({ message: 'Account created successfully' });
 });
+
 app.post('/api/auth/login', (req, res) => {
   const { email, password } = req.body;
-
   const db = readDatabase();
+  const normalizedEmail = String(email || '').trim().toLowerCase();
 
   const user = db.users.find(
-    (item) =>
-      item.email === email &&
-      item.password === password
+    (item) => item.email.toLowerCase() === normalizedEmail && item.password === password
   );
 
   if (!user) {
-    return res.status(401).json({
-      message: 'Invalid email or password'
-    });
+    return res.status(401).json({ message: 'Invalid email or password' });
   }
 
-  res.json({
+  return res.json({
     message: 'Login successful',
-    user: {
-      id: user.id,
-      name: user.name,
-      email: user.email
-    }
+    user: { id: user.id, name: user.name, email: user.email }
   });
 });
-app.listen(PORT, () => {
-  console.log(`Backend running on port ${PORT}`);
-});
-app.get('/api/dashboard', (req, res) => {
-  const db = readDatabase();
 
-  res.json(db.dashboard);
+app.get('/api/dashboard', (req, res) => {
+  res.json(readDatabase().dashboard);
 });
+
 app.get('/api/securities', (req, res) => {
-  const db = readDatabase();
-  res.json(db.securities);
+  res.json(readDatabase().securities);
 });
 
 app.get('/api/prices', (req, res) => {
-  const db = readDatabase();
-  res.json(db.prices);
+  res.json(readDatabase().prices);
 });
 
 app.get('/api/currencies', (req, res) => {
-  const db = readDatabase();
-  res.json(db.currencies);
+  res.json(readDatabase().currencies);
 });
 
 app.get('/api/fx-rates', (req, res) => {
-  const db = readDatabase();
-  res.json(db.fxRates);
+  res.json(readDatabase().fxRates);
 });
 
 app.get('/api/performance', (req, res) => {
-  const db = readDatabase();
-  res.json(db.performance);
+  res.json(readDatabase().performance);
 });
 
 app.get('/api/timeseries', (req, res) => {
   const db = readDatabase();
   const ticker = req.query.ticker;
-  if (!ticker) {
-    return res.json(db.timeseries);
-  }
-  const results =
-    db.timeseries.filter(
-      item => item.ticker === ticker
-    );
-  res.json(results);
+
+  if (!ticker) return res.json(db.timeseries);
+
+  return res.json(db.timeseries.filter((item) => item.ticker === ticker));
 });
+
 app.get('/api/horizon', (req, res) => {
   const db = readDatabase();
-  const horizon =
-    db.securities.map((security) => {
-      const price =
-        db.prices.find(
-          item =>
-            item.ticker ===
-            security.ticker
-        );
-      const performance =
-        db.performance.find(
-          item =>
-            item.ticker ===
-            security.ticker
-        );
-      const priceChange =
-        price
-          ? price.price -
-            price.previousClose
-          : 0;
-      const priceChangePercentage =
-        price
-          ? (
-              priceChange /
-              price.previousClose
-            ) * 100
-          : 0;
 
-      return {
-        ticker:
-          security.ticker,
-        name:
-          security.name,
-        assetClass:
-          security.assetClass,
+  const horizon = db.securities.map((security) => {
+    const price = db.prices.find((item) => item.ticker === security.ticker);
+    const performance = db.performance.find((item) => item.ticker === security.ticker);
 
-        sector:
-          security.sector,
-        currency:
-          security.currency,
-        risk:
-          security.risk,
-        price:
-          price?.price ?? 0,
-        dailyChange:
-          priceChangePercentage,
-        oneYearReturn:
-          performance?.oneYear ?? 0,
-        benchmark:
-          performance?.benchmark ?? 0,
-        excessReturn:
-          performance
-            ? performance.oneYear -
-              performance.benchmark
-            : 0
-      };
-    });
+    const priceChange = price ? price.price - price.previousClose : 0;
+    const dailyChange = price ? (priceChange / price.previousClose) * 100 : 0;
+
+    return {
+      ticker: security.ticker,
+      name: security.name,
+      assetClass: security.assetClass,
+      sector: security.sector,
+      currency: security.currency,
+      risk: security.risk,
+      price: price?.price ?? 0,
+      dailyChange,
+      oneYearReturn: performance?.oneYear ?? 0,
+      benchmark: performance?.benchmark ?? 0,
+      excessReturn: performance ? performance.oneYear - performance.benchmark : 0
+    };
+  });
+
   res.json(horizon);
+});
+
+app.listen(PORT, () => {
+  console.log(`Backend running on port ${PORT}`);
 });
