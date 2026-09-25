@@ -3,66 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Dashboard | Financial Computing Portfolio</title>
-
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/responsive.css">
 </head>
-
 <body class="dashboard-page">
 
-  <header class="topbar">
+<header id="app-header"></header>
 
-    <strong>Financial Computing Portfolio</strong>
+<main class="page-container">
+  <section class="page-header dashboard-hero">
+    <div>
+      <p class="eyebrow">Portfolio Intelligence</p>
+      <h1>Portfolio Dashboard</h1>
+      <p>Overview of portfolio performance, risk and market exposure.</p>
+    </div>
+  </section>
 
-    <button id="logout-button">
-      Logout
-    </button>
+  <section class="kpi-grid">
+    <article class="kpi-card">
+      <span>Portfolio Value</span>
+      <strong id="portfolio-value">£0.00</strong>
+    </article>
 
-  </header>
+    <article class="kpi-card">
+      <span>Daily Return</span>
+      <strong id="daily-return">0.00%</strong>
+    </article>
 
-  <main class="page-container">
+    <article class="kpi-card">
+      <span>Portfolio Risk</span>
+      <strong id="portfolio-risk">N/A</strong>
+    </article>
 
-    <h1>Portfolio Dashboard</h1>
+    <article class="kpi-card">
+      <span>Assets Tracked</span>
+      <strong id="assets-tracked">0</strong>
+    </article>
+  </section>
 
-    <p>
-      Overview of portfolio performance, risk and market exposure.
-    </p>
+  <section class="dashboard-section">
+    <div class="section-heading">
+      <div>
+        <h2>Investment Modules</h2>
+        <p>Explore market data, performance, trends and portfolio analytics.</p>
+      </div>
+    </div>
 
-    <section class="kpi-grid">
+    <div class="module-grid">
+      <a class="module-card" href="/securities/">
+        <span class="module-icon">SE</span>
+        <h3>Securities</h3>
+        <p>Explore assets, sectors, currencies and risk classifications.</p>
+        <span class="module-link">Open Securities →</span>
+      </a>
 
-      <article class="kpi-card">
-        <span>Portfolio Value</span>
-        <strong id="portfolio-value">£0.00</strong>
-      </article>
+      <a class="module-card" href="/prices/">
+        <span class="module-icon">PR</span>
+        <h3>Prices</h3>
+        <p>Monitor market prices, daily movements and trading ranges.</p>
+        <span class="module-link">Open Prices →</span>
+      </a>
 
-      <article class="kpi-card">
-        <span>Daily Return</span>
-        <strong id="daily-return">0.00%</strong>
-      </article>
+      <a class="module-card" href="/performance/">
+        <span class="module-icon">PF</span>
+        <h3>Performance</h3>
+        <p>Compare investment returns against market benchmarks.</p>
+        <span class="module-link">Open Performance →</span>
+      </a>
 
-      <article class="kpi-card">
-        <span>Portfolio Risk</span>
-        <strong id="portfolio-risk">N/A</strong>
-      </article>
+      <a class="module-card" href="/timeseries/">
+        <span class="module-icon">TS</span>
+        <h3>Timeseries</h3>
+        <p>Analyse historical price movements and investment trends.</p>
+        <span class="module-link">Open Timeseries →</span>
+      </a>
 
-      <article class="kpi-card">
-        <span>Assets Tracked</span>
-        <strong id="assets-tracked">0</strong>
-      </article>
+      <a class="module-card" href="/currencies/">
+        <span class="module-icon">CU</span>
+        <h3>Currencies</h3>
+        <p>Review portfolio currencies and regional exposure.</p>
+        <span class="module-link">Open Currencies →</span>
+      </a>
 
-    </section>
+      <a class="module-card" href="/fx-rates/">
+        <span class="module-icon">FX</span>
+        <h3>FX Rates</h3>
+        <p>Monitor foreign-exchange rates and currency movements.</p>
+        <span class="module-link">Open FX Rates →</span>
+      </a>
 
-  </main>
+      <a class="module-card featured" href="/horizon/">
+        <span class="module-icon">HZ</span>
+        <h3>Horizon</h3>
+        <p>Use a consolidated investment view to support portfolio decisions.</p>
+        <span class="module-link">Open Horizon →</span>
+      </a>
+    </div>
+  </section>
+</main>
 
-  <script src="../js/api.js"></script>
-  <script src="../js/auth.js"></script>
-  <script src="../js/layout.js"></script>
-  <script src="../js/dashboard.js"></script>
-
+<script src="../js/api.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/dashboard.js"></script>
 </body>
 </html>
