@@ -1,0 +1,697 @@
+/* =====================================================
+  FINAL POLISH
+  Dashboard Module Cards + Horizon Controls
+  Loaded AFTER all other CSS files
+===================================================== */
+
+/* =========================
+  DASHBOARD MODULE SECTION
+========================= */
+
+.dashboard-section {
+  margin-top: 42px;
+}
+
+.section-heading {
+  margin-bottom: 22px;
+}
+
+.section-heading h2 {
+  margin: 0 0 6px;
+  color: #17253a;
+  font-size: 24px;
+  font-weight: 750;
+}
+
+.section-heading p {
+  margin: 0;
+  color: #68758a;
+  font-size: 14px;
+}
+
+/* Module grid */
+
+.module-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 20px !important;
+  width: 100%;
+}
+
+/* Individual module card */
+
+.module-card {
+  position: relative;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  min-height: 215px;
+
+  padding: 24px !important;
+
+  background: #ffffff !important;
+
+  border: 1px solid #dde5ef !important;
+  border-radius: 18px !important;
+
+  box-shadow: 0 8px 24px rgba(15, 39, 71, 0.07) !important;
+
+  color: #17253a !important;
+
+  text-decoration: none !important;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.module-card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(47, 111, 237, 0.35) !important;
+
+  box-shadow: 0 16px 36px rgba(15, 39, 71, 0.12) !important;
+}
+
+/* Decorative card circle */
+
+.module-card::after {
+  content: "";
+
+  position: absolute;
+
+  right: -40px;
+  bottom: -45px;
+
+  width: 130px;
+  height: 130px;
+
+  border-radius: 50%;
+
+  background: rgba(47, 111, 237, 0.045);
+}
+
+/* Module icon */
+
+.module-icon {
+  position: relative;
+  z-index: 1;
+
+  width: 46px;
+  height: 46px;
+
+  display: grid !important;
+  place-items: center;
+
+  margin-bottom: 20px;
+
+  border-radius: 12px;
+
+  background: #edf4ff;
+
+  color: #2864d7;
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.module-card h3 {
+  position: relative;
+  z-index: 1;
+
+  margin: 0 0 9px !important;
+
+  color: #17253a !important;
+
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.module-card p {
+  position: relative;
+  z-index: 1;
+
+  flex: 1;
+
+  margin: 0 !important;
+
+  color: #68758a !important;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.module-link {
+  position: relative;
+  z-index: 1;
+
+  margin-top: 20px;
+
+  color: #2864d7 !important;
+
+  font-size: 13px;
+  font-weight: 750;
+}
+
+/* Featured Horizon card */
+
+.module-card.featured {
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(47, 111, 237, 0.16),
+      transparent 36%
+    ),
+    linear-gradient(145deg, #ffffff, #f5f8ff) !important;
+
+  border-color: rgba(47, 111, 237, 0.28) !important;
+}
+
+.module-card.featured .module-icon {
+  background: #18375e !important;
+  color: #ffffff !important;
+}
+
+/* =========================
+  HORIZON PAGE HEADER
+========================= */
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 26px;
+}
+
+.page-header > div {
+  flex: 1;
+}
+
+/* Download button */
+
+#download-csv {
+  min-height: 44px;
+
+  padding: 0 18px !important;
+
+  border: 0 !important;
+  border-radius: 10px !important;
+
+  background: linear-gradient(135deg, #18375e, #245d9c) !important;
+
+  color: #ffffff !important;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 18px rgba(15, 39, 71, 0.16);
+}
+
+#download-csv:hover {
+  transform: translateY(-1px);
+}
+
+/* =========================
+  HORIZON FILTER PANEL
+========================= */
+
+.filter-panel {
+  display: grid !important;
+
+  grid-template-columns:
+    minmax(220px, 2fr)
+    minmax(150px, 1fr)
+    minmax(150px, 1fr)
+    minmax(150px, 1fr)
+    auto !important;
+
+  gap: 14px !important;
+
+  align-items: end !important;
+
+  width: 100%;
+
+  margin-bottom: 14px !important;
+
+  padding: 20px !important;
+
+  background: #ffffff !important;
+
+  border: 1px solid #dde5ef !important;
+
+  border-radius: 16px !important;
+
+  box-shadow: 0 8px 24px rgba(15, 39, 71, 0.06) !important;
+}
+
+.filter-group {
+  display: flex !important;
+  flex-direction: column !important;
+
+  gap: 7px !important;
+
+  min-width: 0;
+}
+
+.filter-group label {
+  color: #435168 !important;
+
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+
+/* Search + dropdowns */
+
+.filter-group input,
+.filter-group select {
+  width: 100% !important;
+
+  min-height: 44px !important;
+
+  padding: 9px 12px !important;
+
+  border: 1px solid #ccd6e3 !important;
+
+  border-radius: 9px !important;
+
+  background: #ffffff !important;
+
+  color: #17253a !important;
+
+  font-size: 13px !important;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+  border-color: #3479f4 !important;
+
+  box-shadow: 0 0 0 3px rgba(52, 121, 244, 0.12) !important;
+}
+
+.filter-group input::placeholder {
+  color: #9aa6b5;
+}
+
+/* Reset button */
+
+#reset-filters {
+  min-height: 44px !important;
+
+  padding: 0 17px !important;
+
+  border: 1px solid #ccd6e3 !important;
+
+  border-radius: 9px !important;
+
+  background: #f8fafc !important;
+
+  color: #34445c !important;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+#reset-filters:hover {
+  background: #eef3f8 !important;
+
+  border-color: #aebdd0 !important;
+}
+
+/* =========================
+  RECORD COUNT
+========================= */
+
+.table-summary {
+  display: flex;
+
+  align-items: center;
+
+  min-height: 30px;
+
+  margin: 0 0 10px !important;
+
+  color: #68758a !important;
+
+  font-size: 12px !important;
+}
+
+/* =========================
+  HORIZON TABLE
+========================= */
+
+#horizon-table th {
+  cursor: pointer;
+}
+
+#horizon-table th:hover {
+  background: #eef3f9;
+}
+
+#horizon-table tbody tr:hover {
+  background: #f7faff;
+}
+
+/* =========================
+  PAGINATION
+========================= */
+
+.pagination {
+  display: flex !important;
+
+  flex-wrap: wrap;
+
+  justify-content: center !important;
+
+  align-items: center;
+
+  gap: 7px !important;
+
+  margin-top: 22px !important;
+
+  padding-bottom: 18px;
+}
+
+.pagination button {
+  min-width: 40px !important;
+  height: 40px !important;
+
+  padding: 0 12px !important;
+
+  border: 1px solid #d7e0ea !important;
+
+  border-radius: 9px !important;
+
+  background: #ffffff !important;
+
+  color: #34445c !important;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.18s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  border-color: #18375e !important;
+
+  background: #eef3f9 !important;
+}
+
+.pagination button.active {
+  border-color: #18375e !important;
+
+  background: #18375e !important;
+
+  color: #ffffff !important;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+
+  cursor: not-allowed;
+}
+
+/* =========================
+  RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+  .module-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .filter-panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  #reset-filters {
+    width: 100%;
+  }
+}
+
+@media (max-width: 620px) {
+  .module-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .filter-panel {
+    grid-template-columns: 1fr !important;
+  }
+
+  .page-header {
+    flex-direction: column;
+  }
+
+  #download-csv {
+    width: 100%;
+  }
+}
+
+/* =====================================================
+  MOBILE / RESPONSIVE FIX
+===================================================== */
+
+/* Prevent the whole page from overflowing horizontally */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* -------------------------
+  RESPONSIVE NAVIGATION
+------------------------- */
+
+@media (max-width: 900px) {
+  .app-navbar {
+    display: flex !important;
+    flex-wrap: wrap !important;
+
+    gap: 10px !important;
+
+    padding: 10px 14px !important;
+  }
+
+  .navbar-brand {
+    flex: 1 1 auto;
+  }
+
+  .navbar-brand a {
+    font-size: 14px !important;
+  }
+
+  .navbar-user {
+    margin-left: auto;
+    gap: 8px !important;
+  }
+
+  .navbar-user span {
+    display: none;
+  }
+
+  .logout-button {
+    padding: 6px 9px !important;
+    font-size: 11px !important;
+  }
+
+  .navbar-links {
+    order: 3;
+
+    display: flex !important;
+
+    width: 100% !important;
+
+    gap: 4px !important;
+
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+
+    padding-bottom: 4px;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-link {
+    flex: 0 0 auto;
+
+    white-space: nowrap;
+
+    padding: 7px 9px !important;
+
+    font-size: 11px !important;
+  }
+}
+
+/* -------------------------
+  PAGE WIDTH
+------------------------- */
+
+@media (max-width: 700px) {
+  .page-container {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    padding: 18px 14px !important;
+  }
+
+  .page-header,
+  .section-heading {
+    width: 100%;
+  }
+
+  .page-header h1,
+  .section-heading h1,
+  .section-heading h2 {
+    font-size: 22px !important;
+  }
+
+  .page-header p,
+  .section-heading p {
+    font-size: 13px !important;
+    line-height: 1.5;
+  }
+}
+
+/* -------------------------
+  TABLE RESPONSIVENESS
+------------------------- */
+
+.table-card {
+  width: 100% !important;
+  max-width: 100% !important;
+
+  overflow: hidden !important;
+}
+
+.table-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+
+  min-width: 760px;
+}
+
+th,
+td {
+  white-space: nowrap;
+}
+
+/* On smaller screens make tables slightly more compact */
+@media (max-width: 700px) {
+  th,
+  td {
+    padding: 10px 9px !important;
+
+    font-size: 11px !important;
+  }
+
+  th {
+    font-size: 10px !important;
+  }
+}
+
+/* -------------------------
+  DASHBOARD
+------------------------- */
+
+@media (max-width: 700px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+    gap: 12px !important;
+  }
+
+  .module-grid {
+    grid-template-columns: 1fr !important;
+
+    gap: 14px !important;
+  }
+
+  .module-card {
+    min-height: auto !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .kpi-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* -------------------------
+  HORIZON FILTERS
+------------------------- */
+
+@media (max-width: 700px) {
+  .filter-panel {
+    grid-template-columns: 1fr !important;
+
+    padding: 15px !important;
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .filter-group input,
+  .filter-group select {
+    width: 100% !important;
+  }
+
+  #reset-filters,
+  #download-csv {
+    width: 100% !important;
+  }
+
+  .page-header {
+    flex-direction: column !important;
+  }
+}
+
+/* -------------------------
+  PAGINATION
+------------------------- */
+
+@media (max-width: 500px) {
+  .pagination {
+    justify-content: flex-start !important;
+
+    overflow-x: auto;
+
+    padding-bottom: 8px;
+  }
+
+  .pagination button {
+    flex: 0 0 auto;
+  }
+}
