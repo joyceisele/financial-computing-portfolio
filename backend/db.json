@@ -29,6 +29,12 @@
       "name": "Joyce",
       "email": "joyce@example.com",
       "password": "joyce@example.com"
+    },
+    {
+      "id": 1790346706396,
+      "name": "Joyce2",
+      "email": "joyce2@example.com",
+      "password": "joyce2@example.com"
     }
   ],
   "dashboard": {

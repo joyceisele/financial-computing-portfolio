@@ -1,153 +1,287 @@
-# Financial Computing Portfolio
+# Investment Portfolio Analytics Platform
 
-This project is being developed as part of a practical Financial Computing portfolio.
+## Project Overview
 
-The aim is to demonstrate software development, financial application design, Git/GitHub workflow, backend development, frontend development and Docker-based deployment.
+A full-stack web application for consolidating investment, securities, market-price, performance, timeseries, currency, and FX data into a single interface.
+
+The project demonstrates the development of a financial analytics platform using a JavaScript frontend, Node.js/Express REST API, JSON data store, and containerised deployment.
+
+---
+
+## Business Problem
+
+Investment professionals often work across multiple data sources and spreadsheets when reviewing portfolio information. Consolidating securities, prices, performance, currencies, and historical data into one application can simplify analysis and provide a more consistent view of investment information.
+
+This project demonstrates how a centralised financial-data application can be designed and implemented.
+
+---
+
+## Key Features
+
+* **Authentication** — user login and access control.
+* **Dashboard** — consolidated overview of portfolio information.
+* **Securities** — security-level data and information.
+* **Market Prices** — pricing data for monitored securities.
+* **Investment Performance** — portfolio and investment performance data.
+* **Timeseries** — historical financial data.
+* **Currencies** — supported currency information.
+* **FX Rates** — foreign-exchange data.
+* **Horizon** — longer-term investment analysis.
+* **CSV Export** — export financial data for external analysis.
+
+---
+
+## Technology Stack
+
+| Technology     | Role                             |
+| -------------- | -------------------------------- |
+| HTML / CSS     | Frontend structure and styling   |
+| JavaScript     | Client-side application logic    |
+| Node.js        | Backend runtime                  |
+| Express        | REST API framework               |
+| REST APIs      | Frontend/backend communication   |
+| JSON           | Development data store           |
+| Docker         | Containerisation                 |
+| Docker Compose | Multi-container orchestration    |
+| Nginx          | Web server / reverse proxy       |
+| Git            | Version control                  |
+| GitHub         | Source control and collaboration |
+
+---
+
+## Architecture
+
+```text
+Browser
+   │
+   ▼
+Nginx
+   │
+   ▼
+Frontend
+   │
+   │ HTTP / REST
+   ▼
+Node.js / Express
+   │
+   ▼
+db.json
+```
+
+The browser serves the frontend application, which communicates with the Express backend through HTTP requests. Express handles API routing and data operations against the JSON data store. Nginx provides the web-server/reverse-proxy layer.
+
+---
+
+## Application Modules
+
+| Module         | Function                    |
+| -------------- | --------------------------- |
+| Authentication | User login                  |
+| Dashboard      | Portfolio overview          |
+| Securities     | Security information        |
+| Market Prices  | Market pricing              |
+| Performance    | Investment performance      |
+| Timeseries     | Historical data             |
+| Currencies     | Currency information        |
+| FX Rates       | Foreign-exchange data       |
+| Horizon        | Investment horizon analysis |
+| CSV Export     | Data extraction             |
+
+---
 
 ## Project Structure
 
-### Frontend
+```text
+project/
+├── frontend/
+│   ├── index.html
+│   ├── style.css
+│   └── app.js
+│
+├── backend/
+│   ├── server.js
+│   ├── db.json
+│   └── package.json
+│
+├── nginx/
+│   └── nginx.conf
+│
+├── docker-compose.yml
+└── README.md
+```
 
-The `frontend` directory contains the user interface.
+---
 
-- `index.html` - main application page
-- `css/` - application styling
-- `js/` - browser-side JavaScript
+## API Endpoints
 
-### Backend
+The frontend communicates with the backend through REST endpoints, including:
 
-The `backend` directory contains the server-side application.
+```text
+GET  /health
+POST /login
+GET  /securities
+GET  /prices
+GET  /performance
+GET  /timeseries
+GET  /currencies
+GET  /fx-rates
+GET  /horizon
+GET  /export
+```
 
-- `server.js` - backend server
-- `package.json` - Node.js dependencies and scripts
-- `db.json` - development datastore
-- `Dockerfile` - backend container configuration
-- `.gitignore` - files excluded from Git
+Endpoints are responsible for retrieving application data and supporting frontend functionality.
 
-### Infrastructure
+---
 
-The `Infrastructure` directory contains deployment and container configuration.
+## Docker Setup
 
-- `docker-compose.yaml` - runs the application services together
+Docker separates the application into reproducible services managed through Docker Compose.
 
-### Root Files
+```text
+Docker Compose
+├── Nginx
+│   └── Frontend
+│
+└── Node.js / Express
+    └── db.json
+```
 
-- `start_docker.sh` - starts the Docker environment
-- `stop_docker.sh` - stops the Docker environment
-- `nginx.conf` - Nginx configuration
-- `.dockerignore` - files excluded from Docker builds
-
-## Technologies
-
-- HTML
-- CSS
-- JavaScript
-- Node.js
-- Git
-- GitHub
-- Docker
-- Nginx
-- JSON
-
-## Development Workflow
-
-Development work is carried out using feature branches.
-
-Example:
+Build and start the application with:
 
 ```bash
-git checkout -b feature/project-structure
+docker compose up --build
+```
 
-## Docker Development Environment
+Stop the containers with:
+
+```bash
+docker compose down
+```
+
+---
+
+## How to Run
 
 ### Prerequisites
 
-The project requires:
-
-* Docker Desktop
+* Git
+* Docker
 * Docker Compose
 
-Docker Desktop must be running before starting the application.
-
-### Starting the application
-
-From the project root, run:
+### Clone
 
 ```bash
-docker compose -f Infrastructure/docker-compose.yaml up --build -d
+git clone <repository-url>
+cd <project-directory>
 ```
 
-This starts the frontend and backend Docker services.
+### Start
 
-The frontend is available at:
-
-```text
-http://localhost:8080
+```bash
+docker compose up --build
 ```
 
-The backend is available at:
+The application can then be accessed through the configured Nginx address.
 
-```text
-http://localhost:3000
-```
-
-The backend health endpoint is:
+The backend health endpoint can be used to verify API availability:
 
 ```text
 http://localhost:3000/health
 ```
 
-The health endpoint can also be accessed through Nginx at:
+---
+
+## User Journey
 
 ```text
-http://localhost:8080/api/health
+Login
+  ↓
+Dashboard
+  ↓
+Securities / Market Prices
+  ↓
+Performance
+  ↓
+Timeseries / FX
+  ↓
+Horizon Analysis
+  ↓
+CSV Export
 ```
 
-### Stopping the application
+---
 
-Run:
+## Horizon Analytics
 
-```bash
-docker compose -f Infrastructure/docker-compose.yaml down
+The Horizon module supports analysis across different investment periods rather than focusing solely on a single point in time.
+
+It provides a framework for examining how financial metrics and investment information change over short-, medium-, and long-term horizons.
+
+---
+
+## Financial Concepts
+
+The application incorporates several core investment concepts:
+
+* **Securities** — financial instruments being monitored or analysed.
+* **Market Prices** — observed security prices.
+* **Performance** — changes in investment value over time.
+* **Timeseries** — financial observations indexed by date.
+* **FX Rates** — exchange rates between currencies.
+* **Investment Horizon** — the period over which an investment is analysed.
+
+---
+
+## Testing
+
+Testing includes:
+
+* frontend functionality and navigation;
+* authentication;
+* REST API requests;
+* frontend/backend communication;
+* backend health checks;
+* financial-data retrieval;
+* CSV export;
+* Docker container startup and rebuilds.
+
+---
+
+## Development Workflow
+
+```text
+Plan → Develop → Test → Debug → Refine → Commit → Push
 ```
 
-### Checking running containers
+Git is used to track development changes, while GitHub provides repository management and version history.
 
-Run:
+Docker is used throughout development to maintain a consistent runtime environment.
 
-```bash
-docker ps
-```
+---
 
-The project should have the following containers running:
+## Known Limitations
 
-* `financial-computing-backend`
-* `financial-computing-frontend`
+* `db.json` is suitable for development but not production-scale data storage.
+* Authentication requires additional security controls for production use.
+* Market and FX data depends on available data sources.
+* The application is a portfolio demonstration rather than a production portfolio-management system.
+* Production deployment would require additional security, monitoring, validation, and scalability measures.
 
-### Docker architecture
+---
 
-The application uses two Docker services:
+## Future Improvements
 
-* **Frontend:** Nginx serving the frontend on port `8080`
-* **Backend:** Node.js application exposed on port `3000`
+* Replace `db.json` with a relational database such as PostgreSQL.
+* Implement secure password hashing and session management.
+* Integrate live market and FX APIs.
+* Add portfolio risk and performance metrics.
+* Introduce interactive financial charts.
+* Add automated data updates.
+* Implement automated unit, integration, and end-to-end testing.
+* Deploy to a cloud environment with monitoring and logging.
 
-The services communicate through the Docker network `financial-network`.
+---
 
-A named Docker volume is used for backend `node_modules`.
+## Project Purpose
 
-### Troubleshooting
-
-If Docker commands fail to connect to the Docker engine, make sure Docker Desktop is running.
-
-To rebuild and restart the application:
-
-```bash
-docker compose -f Infrastructure/docker-compose.yaml down
-docker compose -f Infrastructure/docker-compose.yaml up --build -d
-```
-
-To view service logs:
-
-```bash
-docker compose -f Infrastructure/docker-compose.yaml logs --tail=50
-```
+This project demonstrates the application of **full-stack software engineering to a financial-services use case**, combining frontend development, REST APIs, financial data handling, investment analytics, Docker containerisation, Nginx, and version control.
